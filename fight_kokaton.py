@@ -146,6 +146,10 @@ class Score:
     スコアに関するクラス
     """
     def __init__(self, score:int):
+        """
+        引数はスコア（爆弾にビームが当たった回数）
+        スコアを青色で表示するためのSurfaceを作るイニシャライズ
+        """
         self.fonto = pg.font.SysFont("hgp創英角ﾎﾟｯﾌﾟ体", 30)
         self.color = (0, 0, 255)
         self.score = score
@@ -201,9 +205,9 @@ def main():
                 if beam.rct.colliderect(bomb.rct):
                     #ビームと爆弾の衝突判定
                     beams[i], bombs[b] = None, None
-                    score += 1
+                    score += 1 #スコアを加算
                     bird.change_img(6, screen)
-            beams = [beam for beam in beams if beam is not None]
+            beams = [beam for beam in beams if beam is not None] #Noneを削除
                     
         bombs = [bomb for bomb in bombs if bomb is not None]
         key_lst = pg.key.get_pressed()
